@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Route} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
@@ -8,17 +8,15 @@ import Login from "../page/Login";
 
 
 
-
-
 function App() {
- 
+
 
   return (
     <React.Fragment>
-        <ConnectedRouter  history={history}>
-          <Route path="/" exact component={Main} />
-          <Route path="/login" exact component={Login} />
-        </ConnectedRouter>
+      <ConnectedRouter history={history}>
+        <Route path="/" exact component={Login} />
+        <Route path="/main" exact component={Main} />
+      </ConnectedRouter>
     </React.Fragment>
   );
 }
