@@ -1,7 +1,7 @@
-import React,{ useState } from "react";
+import React,{ useState,useRef,useEffect } from "react";
 
 import styled from 'styled-components';
-
+import io from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as omockCreators } from "../redux/modules/omock";
 
@@ -9,7 +9,12 @@ const Div = ({ x, y, order }) => {
   const dispatch = useDispatch();
   const [stone, setStone] = useState("");
 
+
+  const socketRef = useRef();
+
   const Click = () => {
+    socketRef.current.emit("omok", {  x, y, order });
+
     if (stone) {
       console.log("돌아가");
       console.log(stone);
@@ -20,6 +25,15 @@ const Div = ({ x, y, order }) => {
     setStone(order);
     console.log(stone);
   };
+
+  useEffect(() => {
+    socketRef.current = io.connect("http://localhost:4001");
+    socketRef.current.on("omok", ({ name, message }) => {
+      
+    });
+    return () => socketRef.current.disconnect();
+  }, []);
+
 
   return (
     <DDiv onClick={Click}>
