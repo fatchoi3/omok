@@ -8,7 +8,7 @@ import Div from "./Div";
 
 const OmockBase = () => {
   const order = useSelector((state) => state.omock.order);
-  console.log(order);
+  console.log("순서",order);
 
   return (
     <>
