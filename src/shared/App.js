@@ -24,7 +24,7 @@ function App() {
     <React.Fragment>
         <ConnectedRouter  history={history}>
         <p>
-      It's <time dateTime={response}>{response}</time>
+      It'zs <time dateTime={response}>{response}</time>
     </p>
           <Route path="/" exact component={Main} />
           <Route path="/login" exact component={Login} />
